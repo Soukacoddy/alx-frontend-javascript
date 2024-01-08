@@ -1,15 +1,14 @@
 export default function cleanSet(set, startString) {
-  if (!startString || typeof startString !== "string") {
-    return "";
-  }
+  let text = '';
+  const array = [];
 
-  let final_string = "";
-
-  set.forEach((element) => {
-    if (element && element.startsWith(startString)) {
-      final_string += `${element.slice(startString.length)}-`;
+  if (startString && typeof startString === 'string') {
+    for (const element of set) {
+      if (element && element.startsWith(startString)) {
+        array.push(element.slice(startString.length));
+      }
     }
-  });
-
-  return final_string.slice(0, final_string.length - 1);
+    text = array.join('-');
+  }
+  return text;
 }
